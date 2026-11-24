@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WalletSlice — Personal Finance &amp; Budget Tracker for Android</title>
+  <meta name="description" content="WalletSlice is a private, offline-first personal finance and budget tracking app for Android with optional Google Drive app-data backup." />
+  <!-- Paste your Google Search Console meta verification tag on the next line if using HTML tag verification -->
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #1d4ed8;
+      --primary-dark: #1e40af;
+      --primary-soft: #eff6ff;
+      --border: #e2e8f0;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    nav a:hover, nav a.active {
+      color: var(--primary);
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 48px 40px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 32px rgba(29, 78, 216, 0.16);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+    .hero p.subtitle {
+      margin: 0 0 20px;
+      font-size: 1.12rem;
+      color: #dbeafe;
+      max-width: 620px;
+    }
+    .hero p.desc {
+      margin: 0;
+      font-size: 0.98rem;
+      color: #eff6ff;
+      max-width: 680px;
+    }
+    section {
+      margin-bottom: 36px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin: 0 0 18px;
+      letter-spacing: -0.015em;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.04rem;
+      color: var(--text);
+    }
+    .card p {
+      margin: 0;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+    .privacy-box {
+      background: var(--primary-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+      padding: 26px 28px;
+    }
+    .privacy-box h2 {
+      margin-bottom: 10px;
+      color: #1e3a8a;
+      font-size: 1.25rem;
+    }
+    .privacy-box p {
+      margin: 0 0 12px;
+      color: #1e293b;
+      font-size: 0.95rem;
+    }
+    .privacy-box p:last-child {
+      margin-bottom: 0;
+    }
+    .privacy-box a {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 32px 24px; }
+      main { padding: 28px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="./index.html">
+        <span class="brand-icon">W</span>
+        <span>WalletSlice</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="badge">Android Personal Finance App</span>
+      <h1>Your money. Clearly organised.</h1>
+      <p class="subtitle">Track spending. Plan budgets. Stay on top of bills.</p>
+      <p class="desc">
+        WalletSlice is a personal finance and budget tracking application for Android published by ccm. It helps you record expenses, manage budgets and bill reminders, and optionally back up your financial records directly to your own Google Drive.
+      </p>
+    </div>
+
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading">Why WalletSlice</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Private &amp; offline-first</h3>
+          <p>Your transactions, budgets, and notes stay on your Android device — no developer servers, no ads, and no usage tracking.</p>
+        </div>
+        <div class="card">
+          <h3>Smart expense &amp; bill capture</h3>
+          <p>Optionally detect banking and payment notifications on-device to review expenses and set credit card bill reminders, or log everything manually.</p>
+        </div>
+        <div class="card">
+          <h3>Budgets &amp; credit tracking</h3>
+          <p>Organize spending by category, track credit limits, and stay ahead of upcoming card statements and bills.</p>
+        </div>
+        <div class="card">
+          <h3>Optional Google Drive backup</h3>
+          <p>Automatically back up and restore your data using your own hidden Google Drive application data folder (<code>appDataFolder</code>) — WalletSlice never requests access to your other Drive files.</p>
+        </div>
+        <div class="card">
+          <h3>Device lock protection</h3>
+          <p>Keep your finances private with optional Android biometric or screen-lock authentication handled directly by Android.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy-box" aria-labelledby="google-data-heading">
+      <h2 id="google-data-heading">Google Drive Backup &amp; Data Privacy</h2>
+      <p>
+        WalletSlice requests access only to the narrow Google Drive application-data folder (<code>https://www.googleapis.com/auth/drive.appdata</code>) when you choose to enable cloud backup and restore. Your backups stay inside your own Google account and are never sent to developer-operated servers.
+      </p>
+      <p>
+        WalletSlice's use and transfer of information received from Google APIs to any other app adheres to the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>,
+        including the Limited Use requirements. Read our full <a href="./privacy-policy.html">Privacy Policy</a> for details on notification access, backups, retention, and deletion.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 ccm &middot;
+    <a href="./privacy-policy.html">Privacy Policy</a> &middot;
+    Support: <a href="mailto:ccm.admin.desk@gmail.com">ccm.admin.desk@gmail.com</a>
+  </footer>
+</body>
+</html>
